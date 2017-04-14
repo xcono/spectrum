@@ -85,13 +85,13 @@ class MiddleColumn extends Component {
       subscribeFrequency({
         frequencySlug: this.props.activeFrequency,
         communitySlug: this.props.communities.active,
-      }),
+      })
     );
   };
 
   editFrequency = () => {
     this.props.dispatch(
-      openModal('FREQUENCY_EDIT_MODAL', this.props.frequency),
+      openModal('FREQUENCY_EDIT_MODAL', this.props.frequency)
     );
   };
 
@@ -110,8 +110,8 @@ class MiddleColumn extends Component {
     } = this.props;
 
     const messageGroup = messageGroups[index];
-    const active = messageGroup.id === activeMessageGroup &&
-      !messageComposer.isOpen;
+    const active =
+      messageGroup.id === activeMessageGroup && !messageComposer.isOpen;
 
     return React.isValidElement(messageGroup)
       ? messageGroup
@@ -125,10 +125,7 @@ class MiddleColumn extends Component {
   };
 
   renderNotification = ({ index, key }) => {
-    const {
-      activeStory,
-      notifications,
-    } = this.props;
+    const { activeStory, notifications } = this.props;
     const {
       activityType,
       ids,
@@ -137,7 +134,8 @@ class MiddleColumn extends Component {
       contentBlocks,
       read,
       occurrences,
-    } = notifications[index];
+    } =
+      notifications[index];
     const isNewMsg = activityType === ACTIVITY_TYPES.NEW_MESSAGE;
     // TODO: Notifications for new stories in frequencies
     if (!isNewMsg) return;
@@ -151,9 +149,7 @@ class MiddleColumn extends Component {
         messages={occurrences}
         person={{
           photo: '',
-          name: `${formatSenders(senders)} ${isNewMsg
-            ? 'replied:'
-            : 'posted a new story'}`,
+          name: `${formatSenders(senders)} ${isNewMsg ? 'replied:' : 'posted a new story'}`,
         }}
         timestamp={timestamp}
         title={contentBlocks[contentBlocks.length - 1]}
@@ -179,18 +175,18 @@ class MiddleColumn extends Component {
       notification =>
         notification.activityType === ACTIVITY_TYPES.NEW_MESSAGE &&
         notification.ids.story === story.id &&
-        notification.read === false,
+        notification.read === false
     );
     const isNew = notifications.some(
       notification =>
         notification.activityType === ACTIVITY_TYPES.NEW_STORY &&
         notification.ids.story === story.id &&
-        notification.read === false,
+        notification.read === false
     );
     const unreadMessages = notification ? notification.unread : 0;
     const freq = getCurrentFrequency(story.frequencyId, frequencies);
-    const community = freq &&
-      communities.find(community => community.id === freq.communityId);
+    const community =
+      freq && communities.find(community => community.id === freq.communityId);
     const linkPrefix = isEverything
       ? `/everything`
       : `/${community.slug}/~${activeFrequency}`;
@@ -298,13 +294,12 @@ class MiddleColumn extends Component {
               New stories!
             </NewIndicator>}
 
-          {/* {isNotifications && notifications.map(this.renderNotification)} */
-          }
+          {/* {isNotifications && notifications.map(this.renderNotification)} */}
 
           {isNotifications &&
             <InfiniteList
               height={window.innerHeight - 50}
-              width={window.innerWidth > 768 ? 480 : window.innerWidth}
+              width={window.innerWidth > 768 ? 420 : window.innerWidth}
               elementCount={notifications.length}
               elementRenderer={this.renderNotification}
               keyMapper={index => notifications[index].id}
@@ -313,7 +308,7 @@ class MiddleColumn extends Component {
           {isMessages &&
             <InfiniteList
               height={window.innerHeight - 50}
-              width={window.innerWidth > 768 ? 511 : window.innerWidth}
+              width={window.innerWidth > 768 ? 420 : window.innerWidth}
               elementCount={messageGroups.length}
               elementRenderer={this.renderMessageGroup}
               keyMapper={index => messageGroups[index].id}
@@ -322,7 +317,7 @@ class MiddleColumn extends Component {
           {(isEverything || frequency) &&
             <InfiniteList
               height={window.innerHeight - 50}
-              width={window.innerWidth > 768 ? 480 : window.innerWidth}
+              width={window.innerWidth > 768 ? 420 : window.innerWidth}
               elementCount={stories.length}
               elementRenderer={this.renderStory}
               keyMapper={index => stories[index].id}

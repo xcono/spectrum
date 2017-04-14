@@ -41,12 +41,11 @@ export const ScrollBody = styled.div`
 
 export const LeftColumnContainer = styled(ScrollBody)`
   background: ${({ theme }) => theme.bg.reverse};
-  flex: 0 0 256px;
+  flex: 0 0 240px;
   z-index: 2;
 
   @media (max-width: 768px) {
-    transform: translateX( ${props =>
-  props.viewing === 'frequencies' ? '0' : '-100%'} )
+    transform: translateX( ${props => (props.viewing === 'frequencies' ? '0' : '-100%')} )
     z-index: 3;
   }
 `;
@@ -54,12 +53,12 @@ export const LeftColumnContainer = styled(ScrollBody)`
 export const MiddleColumnContainer = styled(ScrollBody)`
   background: ${({ theme }) => theme.bg.wash};
   box-shadow: inset -1px 0 0 ${({ theme }) => theme.border.default};
-  flex: 0 0 480px;
+  flex: 0 0 420px;
   z-index: 1;
   overflow-y: hidden;
 
   @media (max-width: 768px) {
-    position: ${props => props.absolute ? 'absolute' : 'relative'};
+    position: ${props => (props.absolute ? 'absolute' : 'relative')};
     border-right: 0;
     transform: translateX( -100% );
   }
@@ -72,11 +71,7 @@ export const RightColumnContainer = styled(ScrollBody)`
   overflow: hidden;
 
   @media (max-width: 768px) {
-    ${props =>
-  props.viewing === 'story' || props.viewing === 'composer'
-    ? 'transform: translateX( -200% );'
-    : ''}
-    ${props =>
-  props.viewing === 'messageGroup' ? 'transform: translateX( -100% );' : ''}
+    ${props => (props.viewing === 'story' || props.viewing === 'composer' ? 'transform: translateX( -200% );' : '')}
+    ${props => (props.viewing === 'messageGroup' ? 'transform: translateX( -100% );' : '')}
   }
 `;

@@ -365,6 +365,7 @@ class StoryComposer extends Component {
             >
 
               {availableFrequencies.map((frequency, i) => {
+                console.log('frequency: ', frequency);
                 return (
                   <option key={i} value={frequency.id}>
                     {frequency.name}
