@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
 import { ThemeProvider } from 'styled-components';
 import { initStore } from './store';
+import client from './apollo-client';
 import FIREBASE_CONFIG from './config/FirebaseConfig';
 import MainRouter from './MainRouter';
 import { clearStorage } from './helpers/localStorage';
@@ -73,12 +75,12 @@ const theme = {
 
 const render = () => {
   ReactDOM.render(
-    <Provider store={store}>
+    <ApolloProvider client={client} store={store}>
       <ThemeProvider theme={theme}>
         <MainRouter />
       </ThemeProvider>
-    </Provider>,
-    document.querySelector('#root'),
+    </ApolloProvider>,
+    document.querySelector('#root')
   );
 };
 

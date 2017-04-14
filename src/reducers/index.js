@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import client from '../apollo-client';
 import user from './user';
 import stories from './stories';
 import frequencies from './frequencies';
@@ -29,4 +30,5 @@ export default combineReducers({
   notifications,
   messageGroups,
   errors,
+  apollo: client.reducer(),
 });
