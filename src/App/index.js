@@ -300,7 +300,8 @@ class App extends Component {
                 frequency={frequency}
                 messageGroups={sortedMessageGroups}
               />
-            </MiddleColumnContainer>}
+            </MiddleColumnContainer>
+          }
 
           <RightColumnContainer
             active={stories.active}
