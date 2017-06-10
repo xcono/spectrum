@@ -1,6 +1,12 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Transition, FlexRow, Gradient, hexa } from '../../components/globals';
+import {
+  Transition,
+  FlexCol,
+  FlexRow,
+  Gradient,
+  hexa,
+} from '../../components/globals';
 import { Avatar } from '../../components/avatar';
 
 export const UserProfileAvatar = styled(Avatar)`
@@ -20,23 +26,17 @@ export const UserProfileAvatar = styled(Avatar)`
   }
 `;
 
-export const Container = styled(FlexRow)`
-  width: 100%;
-  flex: 0 0 48px;
-`;
-
-export const Nav = styled(FlexRow)`
-  width: 100%;
-  background: ${({ theme }) => (process.env.NODE_ENV === 'production' ? theme.text.default : theme.warn.alt)};
+export const Nav = styled(FlexCol)`
+  background: ${({ theme }) => (process.env.NODE_ENV === 'production' ? theme.bg.reverse : theme.bg.reverse)};
   display: flex;
   align-items: stretch;
   color: ${({ theme }) => theme.text.reverse};
   justify-content: space-between;
-  flex: 0 0 48px;
-  padding: 0 16px;
+  flex: 0 0 64px;
   line-height: 1;
   box-shadow: 0 4px 8px ${({ theme }) => hexa(theme.bg.reverse, 0.15)};
   z-index: 1000;
+  align-self: stretch;
 
   @media (max-width: 768px) {
     margin-bottom: 1px;
@@ -45,7 +45,7 @@ export const Nav = styled(FlexRow)`
   }
 `;
 
-export const Section = styled(FlexRow)`
+export const Section = styled(FlexCol)`
   align-items: stretch;
 
   @media (max-width: 768px) {
@@ -56,9 +56,10 @@ export const Section = styled(FlexRow)`
 `;
 
 export const LogoLink = styled(Link)`
-  margin-right: 32px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  flex: 0 0 64px;
   justify-content: center;
 
   @media (max-width: 768px) {
@@ -89,7 +90,7 @@ export const Logo = styled.img`
   left: 1px;
 `;
 
-export const IconDrop = styled(FlexRow)`
+export const IconDrop = styled(FlexCol)`
   ${/* display: flex;
   flex-direction: row; */ ''}
   ${/* justify-content: center; */ ''}
@@ -106,8 +107,8 @@ export const IconDrop = styled(FlexRow)`
     opacity: 0;
     pointer-events: none;
     position: absolute;
-    top: 100%;
-    right: 0;
+    left: 100%;
+    bottom: 0;
     min-width: 160px;
     padding: 8px;
 
@@ -130,37 +131,25 @@ export const IconDrop = styled(FlexRow)`
 
 export const IconLink = styled(Link)`
   display: flex;
-  flex: 0 0 40px;
-  flex-direction: row;
+  flex: 0 0 56px;
+  flex-direction: column;
   align-items: center;
-  align-self: stretch;
-  margin: 0 8px;
-  padding: 0 8px;
-  opacity: 0.8;
+  justify-content: center;
   position: relative;
-  width: 100%;
 
   &:hover {
-    opacity: 1;
+    background-color: ${({ theme }) => hexa(theme.text.alt, 0.25)};
   }
 
   &[data-active~="true"] {
-    box-shadow: inset 0 -4px 0 ${({ theme }) => theme.bg.default};
-    opacity: 1;
+    background-color: ${({ theme }) => theme.brand.default};
+    background-image: ${({ theme }) => Gradient(theme.brand.alt, theme.brand.default)};
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
     opacity: 0.7;
     margin: 0;
-
-    ${/* &[data-mobileWidth~="third"] {
-      width: 33%;
-    }
-
-    &[data-mobileWidth~="half"] {
-      width: 50%;
-    } */ ''}
 
     &[data-active~="true"] {
       box-shadow: inset 0 0 0 ${({ theme }) => theme.bg.default};
@@ -179,6 +168,7 @@ export const IconLink = styled(Link)`
 `;
 
 export const Label = styled.span`
+  display: none;
   font-size: 14px;
   font-weight: 700;
   margin-left: 12px;

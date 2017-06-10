@@ -4,7 +4,7 @@ import { FlexCol, FlexRow } from '../../components/globals';
 export const View = styled(FlexRow)`
   align-items: stretch;
   background: #fff;
-  max-height: calc(100% - 48px);
+  flex: auto;
 
   @media( max-width: 768px) {
     flex-direction: column;
@@ -17,8 +17,7 @@ export const ViewContent = styled(FlexCol)`
   flex-direction: column;
   flex: 1 1 auto;
   overflow-y: scroll;
-  max-height: ${props =>
-    props.moved ? 'calc(100% - 96px)' : 'calc(100% - 48px)'};
+  max-height: ${props => (props.moved ? 'calc(100% - 96px)' : 'calc(100% - 48px)')};
   align-items: center;
   align-content: flex-start;
 `;

@@ -2,13 +2,17 @@ import styled from 'styled-components';
 
 export const Body = styled.div`
   display: flex;
-  flex-direction: column;
-  flex: 1;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 `;
 
 export const Navbar = styled.nav`
   display: flex;
-  width: 100;
+  flex-direction: column;
+  flex: 0 0 48px
+  align-self: stretch;
   background: ${props => props.theme.text.default};
   padding: 16px 32px;
 `;

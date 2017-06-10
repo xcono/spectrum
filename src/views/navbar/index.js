@@ -79,29 +79,20 @@ class Navbar extends Component {
               <Logo src="/img/mark-white.png" role="presentation" />
             </LogoLink>
 
-            <IconLink
-              data-active={match.url === '/' && match.isExact}
-              data-mobileWidth={'third'}
-              to="/"
-            >
+            <IconLink data-active={match.url === '/' && match.isExact} to="/">
               <Icon glyph="home" />
               <Label>Home</Label>
             </IconLink>
 
             <IconLink
               data-active={match.url.includes('/messages')}
-              data-mobileWidth={'third'}
               to="/messages"
             >
               <Icon glyph="message" />
               <Label>Messages</Label>
             </IconLink>
 
-            <IconLink
-              data-active={match.url === '/explore'}
-              data-mobileWidth={'third'}
-              to="/explore"
-            >
+            <IconLink data-active={match.url === '/explore'} to="/explore">
               <Icon glyph="explore" />
               <Label>Explore</Label>
             </IconLink>
@@ -111,7 +102,6 @@ class Navbar extends Component {
             {/* <IconDrop>
                 <IconLink
                   data-active={match.url === '/notifications'}
-                  data-mobileWidth={'half'}
                   to="/notifications"
                 >
                   <Icon glyph="notification" />
@@ -136,7 +126,6 @@ class Navbar extends Component {
               <ProfileDropdown user={currentUser} />
             </IconDrop>
           </Section>
-
         </Nav>
       );
     }

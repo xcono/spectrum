@@ -80,7 +80,7 @@ class DashboardPure extends Component {
           <Titlebar />
           <AppViewWrapper>
 
-            {!isNewUser &&
+            {/* {!isNewUser &&
               !isMobile &&
               <Column type="secondary">
                 <UserProfile profileSize="mini" data={{ user: user }} />
@@ -91,7 +91,7 @@ class DashboardPure extends Component {
                     user={user}
                     communities={communities}
                   />}
-              </Column>}
+              </Column>}*/}
 
             <Column type="primary">
               {!isNewUser &&

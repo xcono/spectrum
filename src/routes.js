@@ -5,7 +5,7 @@ import { Router, Route, Switch, Redirect } from 'react-router';
 //$FlowFixMe
 import styled from 'styled-components';
 import generateMetaInfo from '../server/shared/generate-meta-info';
-import { FlexCol } from './components/globals';
+import { FlexRow } from './components/globals';
 import { history } from './helpers/history';
 import ScrollManager from './components/scrollManager';
 import Head from './components/head';
@@ -32,12 +32,12 @@ const About = () => (
   </div>
 );
 
-const Body = styled(FlexCol)`
-  display: flex;
+const Body = styled(FlexRow)`
   width: 100vw;
   height: 100vh;
-  overflow-y: scroll;
+  overflow: hidden;
   background: ${props => props.theme.bg.wash};
+  align-items: stretch;
 
   @media(max-width: 768px) {
     height: ${window.innerHeight}px;
